@@ -29,7 +29,7 @@ const ItemListContainer = () => {
         <div 
           key={product.id}
           style={{
-            border: "2px solid black",
+            border: "1px solid black",
             width: "25%", // Para tener 4 elementos por fila en pantallas grandes
             boxSizing: "border-box", // Considerar el borde en el ancho total
             padding: "20px", // Espaciado entre elementos
