@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate,Link } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton } from "@mui/material";
