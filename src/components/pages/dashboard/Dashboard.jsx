@@ -47,7 +47,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Button variant="contained" onClick={() => setOpen(true)} style={{marginBottom:'20px'}}>
+      <Button variant="contained"  color="success" onClick={() => setOpen(true)} style={{marginBottom:'20px'}}>
         Costo de envio
       </Button>
       <Modal

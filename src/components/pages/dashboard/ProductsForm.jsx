@@ -118,6 +118,9 @@ const ProductsForm = ({
           name="category"
           onChange={handleChange}
         />
+        <div>
+        {productSelected?.image}
+        </div>
         <TextField type="file" onChange={(e) => setFile(e.target.files[0])} />
         {file && (
           <Button onClick={handleImage} type="button">
