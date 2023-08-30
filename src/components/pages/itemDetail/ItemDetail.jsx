@@ -82,7 +82,7 @@ const ItemDetail = () => {
   {product && (
     <div> 
       <label>Total:</label>
-      <h2 style={{textAlign:'center'}}>{product.unit_price}*{counter}</h2>
+      <h2 style={{textAlign:'center'}}>{product.unit_price * counter}</h2>
       <h2 style={{textAlign:'center'}}>{product.title}</h2>
       <img src={product.image} style={{ width: "400px" }} alt="" />
     </div>
