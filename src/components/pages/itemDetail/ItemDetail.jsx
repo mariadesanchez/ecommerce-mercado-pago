@@ -63,7 +63,7 @@ const ItemDetail = () => {
   {product && (
     <div> <List>
     {menuItemsDetail.map(({ id, path, title, Icon }) => {
-      return (
+  
         <Link key={id} to={path}>
           <ListItem disablePadding>
             <ListItemButton>
@@ -74,7 +74,7 @@ const ItemDetail = () => {
             </ListItemButton>
           </ListItem>
         </Link>
-      );
+
     })}</List>
       <h2 style={{textAlign:'center'}}>{product.title}</h2>
       <img src={product.image} style={{ width: "400px" }} alt="" />
