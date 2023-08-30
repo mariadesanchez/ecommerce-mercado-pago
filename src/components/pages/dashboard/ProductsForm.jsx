@@ -19,11 +19,13 @@ const ProductsForm = ({
     category: "",
     image: "",
   });
+  const [url, setUrl] = useState(null)
   const [file, setFile] = useState(null);
 
   const handleImage = async () => {
     setIsLoading(true);
     let url = await uploadFile(file);
+    setUrl(url)
 
     if (productSelected) {
       setProductSelected({ ...productSelected, image: url });
@@ -122,7 +124,7 @@ const ProductsForm = ({
         <div >
           {url && 
           <img
-          src={{url}}
+          src={url}
           alt=""
           style={{ width: "80px", height: "80px" }}
         />}
