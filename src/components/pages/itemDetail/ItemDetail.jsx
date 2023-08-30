@@ -56,11 +56,11 @@ const ItemDetail = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
  
-                  <IconButton>
+                  <IconButton onClick={navigate("/cart")}>
                     <ShoppingCartCheckoutIcon color="primary" />  
                     {/* {navigate("/cart")} */}
                   </IconButton>
-                  <IconButton>
+                  <IconButton onClick={navigate("/shop")}>
                     <ShopIcon color="primary" />
                     {/* {navigate("/shop")} */}
                   </IconButton>
