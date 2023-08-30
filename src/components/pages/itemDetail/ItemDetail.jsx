@@ -5,16 +5,8 @@ import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-// import IconButton from "@mui/material/IconButton";
-// import List from "@mui/material/List";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import { menuItemsDetail } from "../../../router/navigation";
-// import { Link } from "react-router-dom";
 
 const ItemDetail = () => {
   const { id } = useParams();
