@@ -22,7 +22,7 @@ const ItemListContainer = () => {
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
-  {/* <h1>Estoy en el shop</h1> */}
+
 
   {products.map((product) => {
     return (
