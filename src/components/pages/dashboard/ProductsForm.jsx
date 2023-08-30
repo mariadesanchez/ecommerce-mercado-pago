@@ -122,12 +122,12 @@ const ProductsForm = ({
           onChange={handleChange}
         />
         <div >
-          {url && 
+          {url && (
           <img
           src={url}
           alt=""
           style={{ width: "80px", height: "80px" }}
-        />}
+        />)}
                   <img
                     src={productSelected?.image}
                     alt=""
