@@ -51,12 +51,12 @@ const ItemDetail = () => {
 
   return (
     <div>
-      <h1>detalle</h1>
+
 
       {product && (
         <div>
           <h2>{product.title}</h2>
-          <img src={product.image} style={{ width: "200px" }} alt="" />
+          <img src={product.image} style={{ width: "400px" }} alt="" />
         </div>
       )}
   {
@@ -66,15 +66,17 @@ const ItemDetail = () => {
     product?.stock === quantity && <h6>Ya tienes el maximo en el carrito</h6>
   }
       <div style={{ display: "flex" }}>
+      <Button variant="contained" onClick={subOne}>
+          -
+        </Button>
+        <h4>{counter}</h4>
+       
         <Button variant="contained" onClick={addOne}>
           +
         </Button>
-        <h4>{counter}</h4>
-        <Button variant="contained" onClick={subOne}>
-          -
-        </Button>
       </div>
-      <Button onClick={onAdd}>Agregar al carrito</Button>
+    
+      <Button onClick={onAdd} variant="contained"  color="success">Agregar al carrito</Button>
     </div>
   );
 };
