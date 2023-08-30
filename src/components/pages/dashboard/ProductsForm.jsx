@@ -127,16 +127,16 @@ const ProductsForm = ({
       
         </div>
         <TextField type="file" onChange={(e) => setFile(e.target.files[0])} />
-        {file && (
+        {/* {file && ( */}
           <Button onClick={handleImage} type="button">
             Cargar imagen
           </Button>
-        )}
-        {file && !isLoading && (
+        {/* )} */}
+        {/* {file && !isLoading && ( */}
           <Button variant="contained" type="submit">
             {productSelected ? "modificar" : "crear"}
           </Button>
-        )}
+        {/* )} */}
       </form>
     </div>
   );
