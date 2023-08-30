@@ -58,11 +58,11 @@ const ItemDetail = () => {
  
                   <IconButton>
                     <ShoppingCartCheckoutIcon color="primary" />  
-                    {navigate("/cart")}
+                    {/* {navigate("/cart")} */}
                   </IconButton>
                   <IconButton>
                     <ShopIcon color="primary" />
-                    {navigate("/shop")}
+                    {/* {navigate("/shop")} */}
                   </IconButton>
   
   {product && (
