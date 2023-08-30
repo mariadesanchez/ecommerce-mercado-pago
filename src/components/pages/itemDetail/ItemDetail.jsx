@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate,Link } from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton } from "@mui/material";
@@ -55,16 +55,16 @@ const ItemDetail = () => {
 
   return (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-      <Link to={"/cart"}>
+
         <IconButton>
           <ShoppingCartCheckoutIcon color="primary" />
-       
-    </IconButton></Link>
-    <Link to={"/cart"}>
+          <Link to={`/cart`}>Ir a carrito</Link>
+    </IconButton>
+
     <IconButton>
         <ShopIcon color="primary" />
-      
-      </IconButton>  </Link>
+        <Link to={`/shop`}>Ir a Tienda</Link>
+      </IconButton>
   
   {product && (
     <div> 
