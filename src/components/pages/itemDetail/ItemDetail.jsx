@@ -56,15 +56,16 @@ const ItemDetail = () => {
   return (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
 
+<Link to={`/cart`}>
         <IconButton>
           <ShoppingCartCheckoutIcon color="primary" />
-          <Link to={`/cart`}>Ir a Carrito</Link>
-    </IconButton>
-
+        
+    </IconButton> Ir a Carrito</Link>
+    <Link to={`/shop`}>
     <IconButton>
         <ShopIcon color="primary" />
-        <Link to={`/shop`}>Ir a Tienda</Link>
-      </IconButton>
+     
+      </IconButton>  Ir a Tienda</Link>
   
   {product && (
     <div> 
