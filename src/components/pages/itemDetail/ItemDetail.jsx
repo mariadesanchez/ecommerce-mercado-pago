@@ -10,7 +10,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-// import MenuIcon from "@mui/icons-material/Menu";
+// eslint-disable-next-line no-unused-vars
+import MenuIcon from "@mui/icons-material/Menu";
 import { menuItemsDetail } from "../../../router/navigation";
 import { Link } from "react-router-dom";
 
