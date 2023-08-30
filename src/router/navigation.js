@@ -3,8 +3,8 @@ import StoreIcon from '@mui/icons-material/Store';
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
 export const menuItems = [
-    
-   
+
+
     {
         id: "home",
         path: "/",
@@ -29,4 +29,21 @@ export const menuItems = [
         title: "Mis compras",
         Icon: ShopIcon
     }
+];
+export const menuItemsDetail = [
+
+
+    {
+        id: "products",
+        path: "/shop",
+        title: "Tienda",
+        Icon: StoreIcon
+    },
+    {
+        id: "cart",
+        path: "/cart",
+        title: "Carrito",
+        Icon: ShoppingCartCheckoutIcon
+    }
+
 ]

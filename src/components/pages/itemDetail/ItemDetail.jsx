@@ -4,6 +4,15 @@ import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
+// import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+// import MenuIcon from "@mui/icons-material/Menu";
+import { menuItemsDetail } from "../../../router/navigation";
+import { Link } from "react-router-dom";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -52,7 +61,21 @@ const ItemDetail = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
   {product && (
-    <div>
+    <div> <List>
+    {menuItemsDetail.map(({ id, path, title, Icon }) => {
+      return (
+        <Link key={id} to={path}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Icon sx={{ color: "whitesmoke" }} />
+              </ListItemIcon>
+              <ListItemText primary={title} sx={{ color: "whitesmoke" }} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+      );
+    })}</List>
       <h2 style={{textAlign:'center'}}>{product.title}</h2>
       <img src={product.image} style={{ width: "400px" }} alt="" />
     </div>
