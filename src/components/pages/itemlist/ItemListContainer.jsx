@@ -21,7 +21,7 @@ const ItemListContainer = () => {
 
 
   return (
-    <div style={{ display: "flex" }}>
+    <div>
     <h1>Estoy en el shop</h1>
   
     {products.map((product) => {
@@ -33,7 +33,7 @@ const ItemListContainer = () => {
             width: "25%", // Para tener 4 elementos por fila en pantallas grandes
             boxSizing: "border-box", // Considerar el borde en el ancho total
             padding: "10px", // Espaciado entre elementos
-            flexWrap: "wrap"
+          
           }}
         >
           <img src={product.image} style={{ width: "100%" }} alt="" />
