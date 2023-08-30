@@ -118,11 +118,11 @@ const ProductsForm = ({
           name="category"
           onChange={handleChange}
         />
-        <div style="display: flex; justify-content: center; align-items: center;">
+        <div >
         <img
                     src={productSelected?.image}
                     alt=""
-                    style={{ width: "80px", height: "80px" }}
+                    style={{ width: "80px", height: "80px", margin:'auto' }}
                   />
       
         </div>
