@@ -60,7 +60,7 @@ const ItemDetail = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-  
+  {/* VER NO APARECE EN DETAIL */}
   <List>
     {menuItemsDetail.map(({ id, path, title, Icon }) => {
   
@@ -81,6 +81,7 @@ const ItemDetail = () => {
   
   {product && (
     <div> 
+      <h2 style={{textAlign:'center'}}>{product.unit_price}</h2>
       <h2 style={{textAlign:'center'}}>{product.title}</h2>
       <img src={product.image} style={{ width: "400px" }} alt="" />
     </div>
