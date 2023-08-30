@@ -38,8 +38,8 @@ const ItemListContainer = () => {
       >
         <img src={product.image} style={{ width: "100%" }} alt="" />
         <h4>{product.title}</h4>
-        <h4>Precio: {product.unit_price}</h4>
-        <h4>Stock: {product.stock}</h4>
+        <h4>Precio:`${product.unit_price}`</h4>
+        <h4>{product.stock}</h4>
         <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
       </div>
     );
