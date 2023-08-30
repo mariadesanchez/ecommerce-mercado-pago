@@ -54,16 +54,17 @@ const ItemDetail = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
- 
-                  <IconButton>
-                    <ShoppingCartCheckoutIcon color="primary" />  
-                    <Link key={id} to={"/cart"}>Ir a Carrito</Link>
-                  </IconButton>
-                  <IconButton>
-                    <ShopIcon color="primary" />
-                    <Link key={id} to={"/cart"}>Ir a Tienda</Link>
-                  </IconButton>
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
+      <Link to={"/cart"}>
+        <IconButton>
+          <ShoppingCartCheckoutIcon color="primary" />
+       
+    </IconButton></Link>
+    <Link to={"/cart"}>
+    <IconButton>
+        <ShopIcon color="primary" />
+      
+      </IconButton>  </Link>
   
   {product && (
     <div> 
