@@ -58,7 +58,7 @@ const ItemDetail = () => {
 
         <IconButton>
           <ShoppingCartCheckoutIcon color="primary" />
-          <Link to={`/cart`}>Ir a carrito</Link>
+          <Link to={`/cart`}>Ir a Carrito</Link>
     </IconButton>
 
     <IconButton>
