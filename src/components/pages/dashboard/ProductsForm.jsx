@@ -119,7 +119,12 @@ const ProductsForm = ({
           onChange={handleChange}
         />
         <div>
-        {productSelected?.image}
+        <img
+                    src={productSelected?.image}
+                    alt=""
+                    style={{ width: "80px", height: "80px" }}
+                  />
+      
         </div>
         <TextField type="file" onChange={(e) => setFile(e.target.files[0])} />
         {file && (
