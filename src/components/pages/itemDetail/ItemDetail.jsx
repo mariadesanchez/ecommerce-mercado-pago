@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ShopIcon from '@mui/icons-material/Shop';
 
@@ -16,7 +15,7 @@ const ItemDetail = () => {
   let quantity = getQuantityById(id);
   const [product, setProduct] = useState(null);
   const [counter, setCounter] = useState(quantity || 1);
-  
+  const navigate = useNavigate();
 
   useEffect(() => {
     let refCollection = collection(db, "products");
@@ -58,10 +57,12 @@ const ItemDetail = () => {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
  
                   <IconButton>
-                    <ShoppingCartCheckoutIcon color="primary" />
+                    <ShoppingCartCheckoutIcon color="primary" />  
+                    {navigate("/cart")}
                   </IconButton>
                   <IconButton>
                     <ShopIcon color="primary" />
+                    {navigate("/shop")}
                   </IconButton>
   
   {product && (
