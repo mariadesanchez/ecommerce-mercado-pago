@@ -6,6 +6,8 @@ import { getDoc, collection, doc } from "firebase/firestore";
 import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import ShopIcon from '@mui/icons-material/Shop';
 
 
 const ItemDetail = () => {
@@ -56,7 +58,10 @@ const ItemDetail = () => {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
  
                   <IconButton>
-                    <DeleteForeverIcon color="primary" />
+                    <ShoppingCartCheckoutIcon color="primary" />
+                  </IconButton>
+                  <IconButton>
+                    <ShopIcon color="primary" />
                   </IconButton>
   
   {product && (
