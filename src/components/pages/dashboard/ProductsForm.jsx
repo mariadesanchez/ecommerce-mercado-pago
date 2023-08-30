@@ -122,7 +122,7 @@ const ProductsForm = ({
         <img
                     src={productSelected?.image}
                     alt=""
-                    style={{ width: "80px", height: "80px", margin:'auto' }}
+                    style={{ width: "80px", height: "80px" }}
                   />
       
         </div>
