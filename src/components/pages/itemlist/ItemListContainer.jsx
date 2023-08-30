@@ -21,24 +21,26 @@ const ItemListContainer = () => {
 
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div style={{ display: "flex" }}>
     <h1>Estoy en el shop</h1>
   
     {products.map((product) => {
       return (
-        <div
+        <div 
           key={product.id}
           style={{
             border: "2px solid black",
             width: "25%", // Para tener 4 elementos por fila en pantallas grandes
             boxSizing: "border-box", // Considerar el borde en el ancho total
-            padding: "10px" // Espaciado entre elementos
+            padding: "10px", // Espaciado entre elementos
+            flexWrap: "wrap"
           }}
         >
           <img src={product.image} style={{ width: "100%" }} alt="" />
           <h4>{product.title}</h4>
-          <h4>Precio: {product.unit_price}</h4>
-          <h4>Stock: {product.stock}</h4>
+
+          <h4>{product.unit_price}</h4>
+          <h4>{product.stock}</h4>
           <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
         </div>
       );
