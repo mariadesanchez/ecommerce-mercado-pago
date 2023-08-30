@@ -62,23 +62,8 @@ const ItemDetail = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-  {/* VER NO APARECE EN DETAIL */}
-  {/* <List>
-    {menuItemsDetail.map(({ id, path, title, Icon }) => {
-  
-        <Link key={id} to={path}>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <Icon sx={{ color: "whitesmoke" }} />
-              </ListItemIcon>
-              <ListItemText primary={title} sx={{ color: "whitesmoke" }} />
-            </ListItemButton>
-          </ListItem>
-        </Link>
-
-    })}</List> */}
-     <IconButton>
+ 
+                  <IconButton>
                     <DeleteForeverIcon color="primary" />
                   </IconButton>
   
