@@ -35,7 +35,7 @@ const ItemListContainer = () => {
           boxSizing: "border-box",
           minWidth: "250px", // Ancho mínimo para evitar elementos demasiado pequeños
         }}
-      ><p>cualq cosa</p>
+      >
         <img src={product.image} style={{ width: "100%" }} alt="" />
         <h4>{product.title}</h4>
         <h4>Precio: {product.unit_price}</h4> {/* Corrección aquí */}
