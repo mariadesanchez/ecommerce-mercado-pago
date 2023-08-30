@@ -1,18 +1,20 @@
+/* eslint-disable react/jsx-no-undef */
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { getDoc, collection, doc } from "firebase/firestore";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import { CartContext } from "../../../context/CartContext";
+
 // import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+// import List from "@mui/material/List";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemText from "@mui/material/ListItemText";
 // import MenuIcon from "@mui/icons-material/Menu";
-import { menuItemsDetail } from "../../../router/navigation";
-import { Link } from "react-router-dom";
+// import { menuItemsDetail } from "../../../router/navigation";
+// import { Link } from "react-router-dom";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -61,7 +63,7 @@ const ItemDetail = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
   {/* VER NO APARECE EN DETAIL */}
-  <List>
+  {/* <List>
     {menuItemsDetail.map(({ id, path, title, Icon }) => {
   
         <Link key={id} to={path}>
@@ -75,9 +77,10 @@ const ItemDetail = () => {
           </ListItem>
         </Link>
 
-    })}</List>
-  
-  
+    })}</List> */}
+     <IconButton>
+                    <DeleteForeverIcon color="primary" />
+                  </IconButton>
   
   {product && (
     <div> 
