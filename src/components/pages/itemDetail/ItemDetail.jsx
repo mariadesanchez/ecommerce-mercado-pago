@@ -53,7 +53,7 @@ const ItemDetail = () => {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
   {product && (
     <div>
-      <h2>{product.title}</h2>
+      <h2 style={{textAlign:'center'}}>{product.title}</h2>
       <img src={product.image} style={{ width: "400px" }} alt="" />
     </div>
   )}
