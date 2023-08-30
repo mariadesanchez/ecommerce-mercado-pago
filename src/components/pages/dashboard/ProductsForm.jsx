@@ -122,7 +122,7 @@ const ProductsForm = ({
         <div >
           {url && 
           <img
-          src={url}
+          src={{url}}
           alt=""
           style={{ width: "80px", height: "80px" }}
         />}
