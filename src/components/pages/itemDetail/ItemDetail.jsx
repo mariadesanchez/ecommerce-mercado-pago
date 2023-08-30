@@ -76,7 +76,7 @@ const ItemDetail = () => {
         </Button>
       </div>
     
-      <Button onClick={onAdd} variant="contained"  color="success">Agregar al carrito</Button>
+      <Button onClick={onAdd} variant="contained"  color="success" style={{marginTop:'20px'}}>Agregar al carrito</Button>
     </div>
   );
 };
