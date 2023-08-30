@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { db, uploadFile } from "../../../firebaseConfig";
@@ -119,7 +120,13 @@ const ProductsForm = ({
           onChange={handleChange}
         />
         <div >
-        <img
+          {url && 
+          <img
+          src={url}
+          alt=""
+          style={{ width: "80px", height: "80px" }}
+        />}
+                  <img
                     src={productSelected?.image}
                     alt=""
                     style={{ width: "80px", height: "80px" }}
