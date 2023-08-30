@@ -19,8 +19,8 @@ const ProductsForm = ({
     category: "",
     image: "",
   });
-  const [url, setUrl] = useState(null)
-  const [file, setFile] = useState(null);
+  const [urls, setUrls] = useState([])
+  const [files, setFiles] = useState([]);
 
   const handleImage = async () => {
     setIsLoading(true);
@@ -135,7 +135,7 @@ const ProductsForm = ({
                   />
       
         </div>
-        <TextField type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <TextField type="file" onChange={(e) => setFiles(e.target.files[0])} multiple />
         {file && (
           <Button onClick={handleImage} type="button">
             Cargar imagen
