@@ -58,42 +58,48 @@ const ItemDetail = () => {
     addToCart(obj);
   };
 
-  return (<><div><List>
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
+  
+  <List>
     {menuItemsDetail.map(({ id, path, title, Icon }) => {
+  
+        <Link key={id} to={path}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Icon sx={{ color: "whitesmoke" }} />
+              </ListItemIcon>
+              <ListItemText primary={title} sx={{ color: "whitesmoke" }} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-      <Link key={id} to={path}>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <Icon sx={{ color: "whitesmoke" }} />
-            </ListItemIcon>
-            <ListItemText primary={title} sx={{ color: "whitesmoke" }} />
-          </ListItemButton>
-        </ListItem>
-      </Link>;
-
-    })}</List></div><div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh" }}>
-      {product && (
-        <div>
-          <h2 style={{ textAlign: 'center' }}>{product.title}</h2>
-          <img src={product.image} style={{ width: "400px" }} alt="" />
-        </div>
-      )}
-      {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
-      {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Button variant="contained" onClick={subOne}>
-          -
-        </Button>
-        <h4>{counter}</h4>
-        <Button variant="contained" onClick={addOne}>
-          +
-        </Button>
-      </div>
-      <Button onClick={onAdd} variant="contained" color="success" style={{ marginTop: "20px" }}>
-        Agregar al carrito
-      </Button>
-    </div></>
+    })}</List>
+  
+  
+  
+  {product && (
+    <div> 
+      <h2 style={{textAlign:'center'}}>{product.title}</h2>
+      <img src={product.image} style={{ width: "400px" }} alt="" />
+    </div>
+  )}
+  {quantity && <h6>Ya tienes {quantity} en el carrito</h6>}
+  {product?.stock === quantity && <h6>Ya tienes el máximo en el carrito</h6>}
+  <div style={{ display: "flex", alignItems: "center" }}>
+    <Button variant="contained" onClick={subOne}>
+      -
+    </Button>
+    <h4>{counter}</h4>
+    <Button variant="contained" onClick={addOne}>
+      +
+    </Button>
+  </div>
+  <Button onClick={onAdd} variant="contained" color="success" style={{ marginTop: "20px" }}>
+    Agregar al carrito
+  </Button>
+</div>
 
   );
 };
