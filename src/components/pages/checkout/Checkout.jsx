@@ -77,7 +77,9 @@ const Checkout = () => {
     try {
       let response = await axios.post(
         // "https://localhost:8080/create_preference",
-        "https://back-snowy-three.vercel.app/create_preference",
+        // "https://back-snowy-three.vercel.app/create_preference",
+        " https://front-two-sooty.vercel.app/create_preference",
+     
         {
           items: newArray,
           shipment_cost: shipmentCost,
