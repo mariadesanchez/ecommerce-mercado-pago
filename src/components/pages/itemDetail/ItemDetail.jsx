@@ -60,12 +60,12 @@ const ItemDetail = () => {
         <IconButton>
           <ShoppingCartCheckoutIcon color="primary" />
         
-    </IconButton> Ir a Carrito</Link>
+    </IconButton></Link>
     <Link to={`/shop`}>
     <IconButton>
         <ShopIcon color="primary" />
      
-      </IconButton>  Ir a Tienda</Link>
+      </IconButton></Link>
   
   {product && (
     <div> 
