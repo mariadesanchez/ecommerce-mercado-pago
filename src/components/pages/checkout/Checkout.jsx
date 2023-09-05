@@ -81,6 +81,7 @@ const Checkout = () => {
         // " https://front-two-sooty.vercel.app/create_preference",
         " https://back-mariadesanchez.vercel.app/create_preference",
         
+        
      
         {
           items: newArray,
