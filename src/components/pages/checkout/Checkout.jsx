@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
@@ -57,7 +58,7 @@ const Checkout = () => {
 
   useEffect(()=>{
     let shipmentCollection = collection(db, "shipment")
-    let shipmentDoc = doc(shipmentCollection, "HxMuNKLUglVoHjAyosML")
+    let shipmentDoc = doc(shipmentCollection, "8jLICZNG3Y8O9Y3YpOmp")
     getDoc(shipmentDoc).then(res => {
       setShipmentCost(res.data().cost)
     })
