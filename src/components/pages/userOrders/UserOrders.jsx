@@ -67,10 +67,10 @@ console.log(myOrders)
           </TableHead>
           <TableBody>
          { myOrders.map( order => {
-            return <div key={order.id}>
+            return <div key={order.id} style={{maxWidth:'100%'}}>
               {
                 order?.items?.map( product => {
-                  return <div key={product.id}>
+                  return <div key={product.id} style={{maxWidth:'100%'}}>
         
               <TableRow
                 key={product.id}
