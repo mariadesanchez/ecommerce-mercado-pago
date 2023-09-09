@@ -34,7 +34,7 @@ console.log(myOrders)
                 order?.items?.map( product => {
                   return <div key={product.id}>
                       <h2>{product.title}</h2>
-                      <h3>{product.quantity}</h3>
+                      {/* <h3>{product.quantity}</h3> */}
                   </div>
                 })
               }
