@@ -67,7 +67,7 @@ console.log(myOrders)
           </TableHead>
           <TableBody>
          { myOrders.map( order => {
-            return <div key={order.id} style={{border:"2px solid black"}}>
+            return <div key={order.id}>
               {
                 order?.items?.map( product => {
                   return <div key={product.id}>
@@ -90,7 +90,7 @@ console.log(myOrders)
                 </TableCell>
         
                 <TableCell component="th" scope="row" align="left">
-                  {order.total}
+                  {order.total}-({product.unit_price}*{product.quantity})
                 </TableCell>
 
                 <TableCell component="th" scope="row" align="left">
