@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
@@ -147,3 +146,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
