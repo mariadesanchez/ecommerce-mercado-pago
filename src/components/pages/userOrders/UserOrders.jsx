@@ -55,7 +55,7 @@ console.log(myOrders)
         <Table sx={{ minWidth: '650',maxWidth:'100%' }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {/* <TableCell align="left">id</TableCell> */}
+        
               <TableCell align="left">Producto</TableCell>
               <TableCell align="left">Cantidad</TableCell>
               <TableCell align="left">Precio</TableCell>
@@ -90,7 +90,8 @@ console.log(myOrders)
                 </TableCell>
         
                 <TableCell component="th" scope="row" align="left">
-                  {order.total}-{product.unit_price}*{product.quantity}
+                 
+                  {order.total}
                 </TableCell>
 
                 <TableCell component="th" scope="row" align="left">
@@ -107,11 +108,12 @@ console.log(myOrders)
               </div>
                 })
               }
-              {/* <h4>El total de la orden es {order.total}</h4> */}
+          
             </div>
           })
         }
         
+     
           </TableBody>
         </Table>
       </TableContainer>
