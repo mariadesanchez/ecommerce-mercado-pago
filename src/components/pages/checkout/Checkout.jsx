@@ -77,7 +77,7 @@ const Checkout = () => {
     try {
       let response = await axios.post(
         // "https://localhost:8080/create_preference",
-        "https://back-r5s2oshsv-mariadesanchez.vercel.app/create_preference",
+        "https://back-jdoal2v3e-mariadesanchez.vercel.app/create_preference",
     
         
         
