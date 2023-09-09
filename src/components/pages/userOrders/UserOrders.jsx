@@ -90,7 +90,7 @@ console.log(myOrders)
                 </TableCell>
         
                 <TableCell component="th" scope="row" align="left">
-                  {order.total}-({product.unit_price}*{product.quantity})
+                  {order.total}-{product.unit_price}*{product.quantity}
                 </TableCell>
 
                 <TableCell component="th" scope="row" align="left">
