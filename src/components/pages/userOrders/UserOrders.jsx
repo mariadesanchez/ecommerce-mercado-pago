@@ -52,7 +52,7 @@ console.log(myOrders)
         } 
         */}
         <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: '650',maxWidth:'100%' }} aria-label="simple table">
           <TableHead>
             <TableRow>
               {/* <TableCell align="left">id</TableCell> */}
@@ -90,7 +90,7 @@ console.log(myOrders)
                 </TableCell>
         
                 <TableCell component="th" scope="row" align="left">
-                  {product.total}
+                  {order.total}
                 </TableCell>
 
                 <TableCell component="th" scope="row" align="left">
