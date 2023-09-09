@@ -33,25 +33,14 @@ const UserOrders = () => {
 console.log(myOrders)
   return (
     <div>
-        {/* <h1>estoy en mis ordenes de compras</h1>
-        {
-          myOrders.map( order => {
-            return <div key={order.id} style={{border:"2px solid black"}}>
+       
+        <TableContainer component={Paper}>
+        { myOrders.map( order => {
+            return <div key={order.id}>
               {
                 order?.items?.map( product => {
-                  return <div key={product.id}>
-                      <h2>{product.title}</h2>
-                      <h3>{product.quantity}</h3>
-                    
-                  </div>
-                })
-              }
-              <h4>El total de la orden es {order.total}</h4>
-            </div>
-          })
-        } 
-        */}
-        <TableContainer component={Paper}>
+            
+                  return <div key={product.id} >
         <Table sx={{ minWidth: '650',maxWidth:'100%' }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -60,62 +49,43 @@ console.log(myOrders)
               <TableCell align="left">Cantidad</TableCell>
               <TableCell align="left">Precio</TableCell>
               <TableCell align="left">Total</TableCell>
+              <TableCell align="left">Fecha</TableCell>
               <TableCell align="left">imagen</TableCell>
              
             
             </TableRow>
           </TableHead>
+          
+         
           <TableBody>
-         { myOrders.map( order => {
-            return <div key={order.id} style={{maxWidth:'100%'}}>
-              {
-                order?.items?.map( product => {
-                  return <div key={product.id} style={{maxWidth:'100%'}}>
+         
+
+          <TableRow>
         
-              <TableRow
-                key={product.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-               
-                <TableCell component="th" scope="row" align="left">
-                  {product.title}
-                </TableCell>
-
-                <TableCell component="th" scope="row" align="left">
-                  {product.quantity}
-                </TableCell>
-
-                <TableCell component="th" scope="row" align="left">
-                  {product.unit_price}
-                </TableCell>
-        
-                <TableCell component="th" scope="row" align="left">
-                 
-                  {order.total}
-                </TableCell>
-
-                <TableCell component="th" scope="row" align="left">
-                  <img
+        <TableCell align="left">{product.title}</TableCell>
+        <TableCell align="left">{product.quantity}</TableCell>
+        <TableCell align="left">{product.unit_price}</TableCell>
+        <TableCell align="left">{order.total}</TableCell>
+        <TableCell align="left">{order.email}</TableCell>
+        <TableCell align="left"><img
                     src={product.image}
                     alt=""
-                    style={{ width: "80px", height: "80px" }}
-                  />
-                </TableCell>
-              
-               
-              </TableRow>
-               
-              </div>
+                    style={{ width: "120px", height: "120px" }}
+                  /></TableCell>
+     
+      
+      </TableRow>
+     
+      </TableBody>
+        
+        </Table>
+        </div>
                 })
               }
           
             </div>
           })
         }
-        
-     
-          </TableBody>
-        </Table>
       </TableContainer>
     </div>
   )
