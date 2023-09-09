@@ -26,7 +26,7 @@ const UserOrders = () => {
 console.log(myOrders)
   return (
     <div>
-        <h1>estoy en mis ordenes</h1>
+        <h1>estoy en mis ordenes de compras</h1>
         {
           myOrders.map( order => {
             return <div key={order.id} style={{border:"2px solid black"}}>
