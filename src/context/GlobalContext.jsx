@@ -5,82 +5,54 @@
 import React from 'react';
 import { useReducer } from 'react';
 import { createContext, useContext, useEffect } from 'react';
-import axios from 'axios';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+
+
 
 const contextGlobal = createContext();
 
-const initialDentistState = {
-  dentistsList: [],
-  dentist: {},
-  dentistLike: JSON.parse(localStorage.getItem('dentistLikeStorage')) || [],
-  dentistTheme: true,
-  dentistNombre: '', // Cambio aquí
-  isAuthenticated: false, // Agregar nuevo valor al estado global
-  userAuth:{
-    email:'',
-    name:'',
-    lastname:'',
-    role: '',
+const initialProductState = {
+  shipmentCost: '',
+  productLike: JSON.parse(localStorage.getItem('productLikeStorage')) || [],
 
-  }
   
 };
 
-const dentistReducer = (state, action) => {
+const productReducer = (state, action) => {
   switch (action.type) {
-    case 'GET_LIST':
-      return { ...state, dentistsList: action.payload };
-    case 'GET_DENTIST':
-      return { ...state, dentist: action.payload };
+  
 
-    case 'DENTIST_LIKE':
-      return { ...state, dentistLike: [...state.dentistLike, action.payload] };
+    case 'PRODUCT_LIKE':
+      return { ...state, productLike: [...state.productLike, action.payload] };
 
-    case 'DENTIST_DELETE':
-      return { ...state, dentistLike: action.payload };
-    case 'THEME':
-      return { ...state, dentistTheme: action.payload };
-    case 'SET_DENTIST_NOMBRE': // Acción para establecer el nombre del producto
-      return { ...state, dentistNombre: action.payload };
-    
-      case 'SAVE_USER_AUTH': // Acción para establecer el nombre del producto
-      return { ...state, userAuth: action.payload };
+    case 'PRODUCT_DELETE':
+    return { ...state, productLike: action.payload };
 
-      case 'SET_AUTHENTICATED': // Agregar nueva acción para establecer el estado de autenticación del usuario
-      return { ...state, isAuthenticated: action.payload };
+    case 'SHIPMENT_COST':
+      return { ...state,shipmentCost: action.payload };
+
+   
     default:
       throw new Error();
   }
 };
 
 const Context = ({ children }) => {
-  const [dentistState, dentistDispatch] = useReducer(dentistReducer, initialDentistState);
+  const [productState, productDispatch] = useReducer(productReducer, initialProductState);
 
-  const urlList = 'http://localhost:8080/productos';
-
-  useEffect(() => {
-    axios(urlList).then((res) => dentistDispatch({ type: 'GET_LIST', payload: res.data }));
-  }, [urlList]);
 
   useEffect(() => {
-    localStorage.setItem('dentistLikeStorage', JSON.stringify(dentistState.dentistLike));
-  }, [dentistState.dentistLike]);
+    localStorage.setItem('productLikeStorage', JSON.stringify(productState.productLike));
+  }, [productState.productLike]);
 
   return (
-    <contextGlobal.Provider value={{ dentistState, dentistDispatch }}>
+    <contextGlobal.Provider value={{ productState, productDispatch }}>
       {children}
     </contextGlobal.Provider>
   );
 
 };
 
-
-
-
-
-
 export default Context;
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const usecontextGlobal = () => useContext(contextGlobal);

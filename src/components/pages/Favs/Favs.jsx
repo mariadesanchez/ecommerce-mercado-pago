@@ -9,7 +9,7 @@ import corazon from '../../../../src/images/corazon.png';
 import corazonRojo from '../../../../src/images/corazon-rojo.png';
 
 
-const ItemListContainer = () => {
+const Favs= () => {
   // eslint-disable-next-line no-unused-vars
   const { productState, productDispatch } = usecontextGlobal();
   localStorage.clear();
@@ -47,7 +47,7 @@ const ItemListContainer = () => {
     <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
 
 
-  {products.map((product) => {
+  {productState.productLike.map((product) => {
     return (
       <><div
         key={product.id}
@@ -65,7 +65,7 @@ const ItemListContainer = () => {
         <h4>Stock: {product.stock}</h4>
         <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
   
-        <button onClick={() => addFav(product)} style={{ backgroundColor: 'white', borderRadius: '20px',width: '50px', height: '50px' }}>
+        <button onClick={() => addFav(product)} style={{ backgroundColor: 'white', borderRadius: '15px' }}>
             {productState.productLike.some((fav) => fav.id === product.id) ? (
               <img src={corazonRojo} style={{ width: '40px', height: '40px' }} />
             ) : (
@@ -83,4 +83,4 @@ const ItemListContainer = () => {
   );
 };
 
-export default ItemListContainer;
+export default Favs;

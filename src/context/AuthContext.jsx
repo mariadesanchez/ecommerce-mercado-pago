@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { createContext } from "react";
+import { db } from "../firebaseConfig";
+import {addDoc, collection} from "firebase/firestore";
+import { usecontextGlobal } from '../context/GlobalContext'
 
 export const AuthContext = createContext();
 
 const AuthContextComponent = ({ children }) => {
+  const { productState ,productDispatch} = usecontextGlobal();
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userInfo")) || {}
   );
@@ -19,6 +23,23 @@ const AuthContextComponent = ({ children }) => {
   };
 
   const logoutContext = () => {
+    const ordersCollection = collection(db, "favoritos");
+
+    for (const productId in productState) {
+      if (Object.hasOwnProperty.call(productState, productId)) {
+        const fav = productState[productId];
+        // Suponiendo que user.email contiene el correo electrónico del usuario
+        const userEmail = user.email;
+    addDoc(ordersCollection, { ...fav, userEmail });
+      }
+    }
+    localStorage.clear();
+
+
+  // borrar favoritos, armar case en contextGlobal
+
+      // clearFav()
+
     setUser({});
     setIsLogged(false);
     localStorage.removeItem("userInfo");

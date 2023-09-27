@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useContext, useEffect } from "react"
 import { useState } from "react"
 import { db } from "../../../firebaseConfig"
@@ -10,11 +11,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { usecontextGlobal } from '../../../context/GlobalContext'
+
 
 const UserOrders = () => {
 
   const [myOrders, setMyOrders] = useState([])
   const {user} = useContext(AuthContext)
+  const { productState } = usecontextGlobal();
 
   useEffect(()=>{
 
@@ -48,6 +52,7 @@ console.log(myOrders)
               <TableCell align="left">Producto</TableCell>
               <TableCell align="left">Cantidad</TableCell>
               <TableCell align="left">Precio</TableCell>
+              <TableCell align="left">Costo de Envio</TableCell>
               <TableCell align="left">Total</TableCell>
               <TableCell align="left">Fecha</TableCell>
               <TableCell align="left">imagen</TableCell>
@@ -65,6 +70,7 @@ console.log(myOrders)
         <TableCell align="left">{product.title}</TableCell>
         <TableCell align="left">{product.quantity}</TableCell>
         <TableCell align="left">{product.unit_price}</TableCell>
+        <TableCell align="left">{order.subTotal}</TableCell>
         <TableCell align="left">{order.total}</TableCell>
         <TableCell align="left">{order.email}</TableCell>
         <TableCell align="left"><img

@@ -4,6 +4,7 @@ import { db } from "../../../firebaseConfig";
 import { collection, getDocs, updateDoc, doc, } from "firebase/firestore";
 import ProductsList from "./ProductsList";
 import { Box, Button, Modal, TextField } from "@mui/material";
+import { usecontextGlobal } from '../../../context/GlobalContext'
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,6 +22,7 @@ const Dashboard = () => {
   const [isChange, setIsChange] = useState(false);
   const [open, setOpen] = useState(false);
   const [shipmentCost, setShipmentCost] = useState(null);
+  const { productDispatch } = usecontextGlobal();
 
   useEffect(() => {
     setIsChange(false);
@@ -41,7 +43,8 @@ const Dashboard = () => {
   };
 
   const updateShipment = async()=>{
-    updateDoc( doc(db, "shipment", "HxMuNKLUglVoHjAyosML"), {cost:shipmentCost } )
+    updateDoc( doc(db, "shipment", "8jLICZNG3Y8O9Y3YpOmp"), {cost:shipmentCost } )
+    productDispatch({ type: "SHIPMENT_COST", payload: shipmentCost });
     setOpen(false)
   }
 
@@ -49,6 +52,10 @@ const Dashboard = () => {
     <div>
       <Button variant="contained"  color="success" onClick={() => setOpen(true)} style={{marginBottom:'20px'}}>
         Costo de envio
+      </Button>
+
+      <Button variant="contained"  color="secondary"  style={{marginBottom:'20px',marginLeft:'20px'}}>
+       Agregar Categoria
       </Button>
       <Modal
         open={open}

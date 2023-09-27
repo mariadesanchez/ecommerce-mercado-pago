@@ -76,8 +76,8 @@ const Checkout = () => {
     });
     try {
       let response = await axios.post(
-        "https://localhost:8080/create_preference",
-        // "https://back-jdoal2v3e-mariadesanchez.vercel.app/create_preference",
+        // "http://localhost:8080/create_preference",
+        "https://back-jdoal2v3e-mariadesanchez.vercel.app/create_preference",
     
         
         
@@ -100,6 +100,7 @@ const Checkout = () => {
       cp: userData.cp,
       phone: userData.phone,
       items: cart,
+      subTotal: total,
       total: total + shipmentCost ,
       email: user.email,
     };

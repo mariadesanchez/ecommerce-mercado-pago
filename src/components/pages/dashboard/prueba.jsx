@@ -41,3 +41,19 @@
           </TableBody>
         </Table>
       </TableContainer>
+
+
+  useEffect(() => {
+
+      let ordersCollection = collection(db, "favoritos");
+      addDoc(ordersCollection, { ...order }).then(
+        (res) => {
+          setOrderId(res.id);
+        }
+      )
+
+  // borrar favoritos, armar case en contextGlobal
+
+      // clearFav()
+    
+  }, [paramValue]);
