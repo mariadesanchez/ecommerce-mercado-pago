@@ -2,14 +2,14 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { db, uploadFile } from "../../../firebaseConfig";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
 const CategoriasForm = ({
   handleCloseCategoria,
   // handleCloseCategoria,
-  // setIsChange,
-  // productSelected,
-  // setProductSelected,
+  setIsChangeCategoria,
+  categoriaSelected,
+  setCategoriaSelected,
 }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
@@ -26,17 +26,26 @@ const CategoriasForm = ({
     setIsLoading(true);
     let url = await uploadFile(file);
     setUrl(url)
+    
 
+    if (categoriaSelected) {
+      setCategoriaSelected({ ...categoriaSelected, image: url });
+    } else {
       setNewCategoria({ ...newCategoria, image: url });
-
+    }
 
     setIsLoading(false);
   };
 
   const handleChange = (e) => {
-    
+    if (categoriaSelected) {
+      setCategoriaSelected({
+        ...categoriaSelected,
+        [e.target.name]: e.target.value,
+      });
+    } else {
       setNewCategoria({ ...newCategoria, [e.target.name]: e.target.value });
-
+    }
   };
 
   const handleSubmit = (e) => {
@@ -44,21 +53,32 @@ const CategoriasForm = ({
 
     const categoriasCollection = collection(db, "categorias");
 
+    if (categoriaSelected) {
       let obj = {
-        ...newCategoria,
-      
+        ...categoriaSelected,
+        // unit_price: +productSelected.unit_price,
+        // stock: +productSelected.stock,
       };
-      addDoc(categoriasCollection, obj).then(() => {
-   
+      updateDoc(doc(categoriasCollection, categoriaSelected.id), obj).then(() => {
+        setIsChangeCategoria(true);
         handleCloseCategoria();
       });
-
+    } else {
+      let obj = {
+        ...newCategoria,
+        // unit_price: +newProduct.unit_price,
+        // stock: +newProduct.stock,
+      };
+      addDoc(categoriasCollection, obj).then(() => {
+        setIsChangeCategoria(true);
+        handleCloseCategoria();
+      });
+    }
  
   };
 
   return (
     <div>
-      <h2>Agregar Nueva Categoría</h2>
       <form
         onSubmit={handleSubmit}
         style={{
@@ -70,12 +90,14 @@ const CategoriasForm = ({
       >
         <TextField
           variant="outlined"
+          defaultValue={categoriaSelected?.title}
           label="nombre"
           name="title"
           onChange={handleChange}
         />
         <TextField
           variant="outlined"
+          defaultValue={categoriaSelected?.description}
           label="descripcion"
           name="description"
           onChange={handleChange}
@@ -89,6 +111,7 @@ const CategoriasForm = ({
           style={{ width: "80px", height: "80px", border :'none' }}
         />)}
                   <img
+                    src={categoriaSelected?.image}
                     alt=""
                     style={{ width: "80px", height: "80px", border :'none' }}
                   />
@@ -100,8 +123,9 @@ const CategoriasForm = ({
             Cargar imagen
           </Button>
          )}
+        {/* {file && !isLoading && ( */}
           <Button variant="contained" type="submit" color="secondary">
-             Crear
+            {categoriaSelected? "modificar" : "crear"}
           </Button>
         {/* )} */}
       </form>

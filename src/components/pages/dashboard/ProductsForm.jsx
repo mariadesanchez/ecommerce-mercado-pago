@@ -59,6 +59,7 @@ const ProductsForm = ({
     if (productSelected) {
       let obj = {
         ...productSelected,
+        //con el + le indicamos que es numérico tanto precio como stock
         unit_price: +productSelected.unit_price,
         stock: +productSelected.stock,
       };
@@ -69,6 +70,8 @@ const ProductsForm = ({
     } else {
       let obj = {
         ...newProduct,
+                //con el + le indicamos que es numérico tanto precio como stock
+
         unit_price: +newProduct.unit_price,
         stock: +newProduct.stock,
       };

@@ -28,48 +28,82 @@ const style = {
   p: 4,
 };
 
-const ProductsList = ({ products, setIsChange }) => {
+const ProductsList = ({ products, setIsChange, categorias, setIsChangeCategoria }) => {
   const [open, setOpen] = useState(false);
   const [productSelected, setProductSelected] = useState(null);
   const [openCategoria, setOpenCategoria] = useState(false);
+  const [categoriaSelected, setCategoriaSelected] = useState(null);
+  const [productClick, setProductClick] = useState(false);
+  const [categoriaClick, setCategoriaClick] = useState(false);
 
-
+//eliminar un producto
   const deleteProduct = (id) => {
     deleteDoc(doc(db, "products", id));
+    setIsChange(true);
+  };
+
+  //eliminar una categoria
+  const deleteCategoria = (id) => {
+    deleteDoc(doc(db, "categorias", id));
+    setCategoriaClick(true);
     setIsChange(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+  const handleProductClick = () => {
+    setProductClick(true);
+    setCategoriaClick(false)
+  };
 
   const handleOpen = (product) => {
     setProductSelected(product);
+    setProductClick(true);
     setOpen(true);
   };
+
    // eslint-disable-next-line no-unused-vars
    const handleCloseCategoria = () => {
     setOpenCategoria(false);
   };
 
   // eslint-disable-next-line no-unused-vars
-  const handleOpenCategoria = () => {
-    // setProductSelected(product);
+  const handleOpenCategoria = (categoria) => {
+    // eslint-disable-next-line no-undef
+    setCategoriaSelected(categoria);
     setOpenCategoria(true);
+  };
+  const handleCategoriaClick = () => {
+   
+    setCategoriaClick(true); 
+    setProductClick(false);
   };
   return (
     <div>
-      <Button variant="contained" onClick={() => handleOpen(null)}    style={{ marginBottom: '20px', marginRight: '10px' }}>
-        Agregar nuevo
+      
+       <Button variant="contained" onClick={() => handleProductClick()}    style={{ marginBottom: '20px', marginRight: '10px' }}>
+       Productos
       </Button>
+      {productClick&&
+      <Button variant="contained" onClick={() => handleOpen(null)}    style={{ marginBottom: '20px', marginRight: '10px' }}>
+       Nuevo Producto
+      </Button>
+}   <Button variant="contained" color="secondary" onClick={() => handleCategoriaClick()}    style={{ marginBottom: '20px', marginRight: '10px' }}>
+       Categorias
+      </Button>
+{categoriaClick&&
       <Button
         variant="contained"
-        onClick={() => handleOpenCategoria()}
+        onClick={() => handleOpenCategoria(null)}
         color="secondary"
         style={{ marginBottom: '20px', marginRight: '10px' }}
       >
-        Agregar Categoría
-      </Button>
+        Nueva Categoría
+      </Button>}
+     
+      {/* tabla para mostrar los productos */}
+      {productClick&&
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -80,7 +114,7 @@ const ProductsList = ({ products, setIsChange }) => {
               <TableCell align="left">stock</TableCell>
               <TableCell align="left">imagen</TableCell>
               <TableCell align="left">categoria</TableCell>
-              <TableCell align="left"> Producto Nuevo</TableCell>
+              <TableCell align="left"> Editar Producto</TableCell>
 
             </TableRow>
           </TableHead>
@@ -120,13 +154,62 @@ const ProductsList = ({ products, setIsChange }) => {
                     <DeleteForeverIcon color="primary" />
                   </IconButton>
                 </TableCell>
-
-             
-              </TableRow>
+                </TableRow>
+               
             ))}
-          </TableBody>
+             </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer>}
+
+    {/* tabla para mostrar las categorias   */}
+    {categoriaClick&&
+      <TableContainer component={Paper}>
+<Table sx={{ minWidth: 650 }} aria-label="simple table">
+  <TableHead>
+    <TableRow>
+      {/* <TableCell align="left">id</TableCell> */}
+      <TableCell align="left">Título</TableCell>
+      <TableCell align="left">Descripción</TableCell>
+      <TableCell align="left">imagen</TableCell>
+      <TableCell align="left">Editar Categoría</TableCell>
+   
+
+    </TableRow>
+  </TableHead>
+  <TableBody>
+{categorias.map((categoria) => (
+  <TableRow
+    key={categoria.id}
+    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+  >
+      <TableCell component="th" scope="row" align="left">
+                  {categoria.title}
+                </TableCell>
+                <TableCell component="th" scope="row" align="left">
+                  {categoria.description}
+                </TableCell> 
+                <TableCell component="th" scope="row" align="left">
+                  <img
+                    src={categoria.image}
+                    alt=""
+                    style={{ width: "80px", height: "80px" }}
+                  />
+                </TableCell>       
+ <TableCell component="th" scope="row" align="left">
+                  <IconButton onClick={() => handleOpenCategoria(categoria)}>
+                    <EditIcon color="secondary" />
+                  </IconButton>
+                  <IconButton onClick={() => deleteCategoria(categoria.id)}>
+                    <DeleteForeverIcon color="secondary" />
+                  </IconButton>
+                </TableCell>            
+              </TableRow>                       
+                ))}
+                </TableBody>
+        </Table>
+      </TableContainer>}
+
+        
       <Modal
         open={open}
         onClose={handleClose}
@@ -149,8 +232,12 @@ const ProductsList = ({ products, setIsChange }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          
           <CategoriasForm
             handleCloseCategoria={handleCloseCategoria}
+            setIsChangeCategoria={setIsChangeCategoria}
+            categoriaSelected={categoriaSelected}
+            setCategoriaSelected={setCategoriaSelected}
           
           />
         </Box>
