@@ -12,9 +12,9 @@ import { db } from "../../../firebaseConfig";
 import { deleteDoc, doc } from "firebase/firestore";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-// import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import ProductsForm from "./ProductsForm";
+import CategoriasForm from "./CategoriasForm";
 
 const style = {
   position: "absolute",
@@ -31,6 +31,8 @@ const style = {
 const ProductsList = ({ products, setIsChange }) => {
   const [open, setOpen] = useState(false);
   const [productSelected, setProductSelected] = useState(null);
+  const [openCategoria, setOpenCategoria] = useState(false);
+
 
   const deleteProduct = (id) => {
     deleteDoc(doc(db, "products", id));
@@ -45,23 +47,41 @@ const ProductsList = ({ products, setIsChange }) => {
     setProductSelected(product);
     setOpen(true);
   };
+   // eslint-disable-next-line no-unused-vars
+   const handleCloseCategoria = () => {
+    setOpenCategoria(false);
+  };
 
+  // eslint-disable-next-line no-unused-vars
+  const handleOpenCategoria = () => {
+    // setProductSelected(product);
+    setOpenCategoria(true);
+  };
   return (
     <div>
-      <Button variant="contained" onClick={() => handleOpen(null)}>
+      <Button variant="contained" onClick={() => handleOpen(null)}    style={{ marginBottom: '20px', marginRight: '10px' }}>
         Agregar nuevo
+      </Button>
+      <Button
+        variant="contained"
+        onClick={() => handleOpenCategoria()}
+        color="secondary"
+        style={{ marginBottom: '20px', marginRight: '10px' }}
+      >
+        Agregar Categoría
       </Button>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">id</TableCell>
+              {/* <TableCell align="left">id</TableCell> */}
               <TableCell align="left">titulo</TableCell>
               <TableCell align="left">precio</TableCell>
               <TableCell align="left">stock</TableCell>
               <TableCell align="left">imagen</TableCell>
               <TableCell align="left">categoria</TableCell>
-              <TableCell align="left">acciones</TableCell>
+              <TableCell align="left"> Producto Nuevo</TableCell>
+
             </TableRow>
           </TableHead>
           <TableBody>
@@ -70,9 +90,9 @@ const ProductsList = ({ products, setIsChange }) => {
                 key={product.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell component="th" scope="row" align="left">
+                {/* <TableCell component="th" scope="row" align="left">
                   {product.id}
-                </TableCell>
+                </TableCell> */}
                 <TableCell component="th" scope="row" align="left">
                   {product.title}
                 </TableCell>
@@ -100,12 +120,13 @@ const ProductsList = ({ products, setIsChange }) => {
                     <DeleteForeverIcon color="primary" />
                   </IconButton>
                 </TableCell>
+
+             
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
       <Modal
         open={open}
         onClose={handleClose}
@@ -121,6 +142,21 @@ const ProductsList = ({ products, setIsChange }) => {
           />
         </Box>
       </Modal>
+      <Modal
+        open={openCategoria}
+        onClose={handleCloseCategoria}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <CategoriasForm
+            handleCloseCategoria={handleCloseCategoria}
+          
+          />
+        </Box>
+      </Modal>
+    
+    
     </div>
   );
 };

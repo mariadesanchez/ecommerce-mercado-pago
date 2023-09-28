@@ -1,5 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react";
+/* eslint-disable no-undef */
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { db } from "../../../firebaseConfig";
 import { collection, getDocs, updateDoc, doc, } from "firebase/firestore";
 import ProductsList from "./ProductsList";
@@ -23,7 +24,8 @@ const Dashboard = () => {
   const [open, setOpen] = useState(false);
   const [shipmentCost, setShipmentCost] = useState(null);
   const { productDispatch } = usecontextGlobal();
-
+  const navigate = useNavigate();
+  //armar un newArr con data y id, que vienen por separado
   useEffect(() => {
     setIsChange(false);
     let prodcutsCollection = collection(db, "products");
@@ -41,22 +43,37 @@ const Dashboard = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  // const handleClick = () => {
+  //   // Navegar a la página de categorías ("/categoria" en este ejemplo)
+  //   navigate("/categoria");
+  // }
+  
 
+//actualizar el costo de envio
   const updateShipment = async()=>{
     updateDoc( doc(db, "shipment", "8jLICZNG3Y8O9Y3YpOmp"), {cost:shipmentCost } )
     productDispatch({ type: "SHIPMENT_COST", payload: shipmentCost });
     setOpen(false)
   }
+  
 
   return (
     <div>
-      <Button variant="contained"  color="success" onClick={() => setOpen(true)} style={{marginBottom:'20px'}}>
-        Costo de envio
+    
+    <Button
+        variant="contained"
+        color="success"
+        onClick={() => setOpen(true)}
+        style={{ marginBottom: '20px', marginRight: '10px' }}
+      >
+        Costo de envío
       </Button>
 
-      <Button variant="contained"  color="secondary"  style={{marginBottom:'20px',marginLeft:'20px'}}>
-       Agregar Categoria
-      </Button>
+     
+
+       {/* <Button variant="contained" onClick={() => handleOpen(null)}>
+        Agregar nuevo
+      </Button> */}
       <Modal
         open={open}
         onClose={handleClose}

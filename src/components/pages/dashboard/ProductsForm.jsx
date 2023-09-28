@@ -6,12 +6,14 @@ import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
 const ProductsForm = ({
   handleClose,
+  // handleCloseCategoria,
   setIsChange,
   productSelected,
   setProductSelected,
 }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
+
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
@@ -75,6 +77,7 @@ const ProductsForm = ({
         handleClose();
       });
     }
+ 
   };
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/layout/navbar/Navbar";
 import { routes } from "./routes";
@@ -7,6 +8,7 @@ import ForgotPassword from "../components/pages/forgotPassword/ForgotPassword";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ProtectedAdmin from "./ProtectedAdmin";
 import ProtectedUsers from "./ProtectedUsers";
+import Categoria from "../components/pages/categoria/Categoria"
 
 const AppRouter = () => {
   return (
@@ -24,6 +26,7 @@ const AppRouter = () => {
       <Route element={<ProtectedAdmin />}>
         <Route element={<Navbar />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categoria" element={<Categoria />} />
         </Route>
       </Route>
 
