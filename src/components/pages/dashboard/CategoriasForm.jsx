@@ -6,7 +6,6 @@ import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 
 const CategoriasForm = ({
   handleCloseCategoria,
-  // handleCloseCategoria,
   setIsChangeCategoria,
   categoriaSelected,
   setCategoriaSelected,

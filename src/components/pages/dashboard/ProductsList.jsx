@@ -222,6 +222,7 @@ const ProductsList = ({ products, setIsChange, categorias, setIsChangeCategoria 
             setIsChange={setIsChange}
             productSelected={productSelected}
             setProductSelected={setProductSelected}
+            categorias={categorias}
           />
         </Box>
       </Modal>
@@ -238,6 +239,7 @@ const ProductsList = ({ products, setIsChange, categorias, setIsChangeCategoria 
             setIsChangeCategoria={setIsChangeCategoria}
             categoriaSelected={categoriaSelected}
             setCategoriaSelected={setCategoriaSelected}
+            categorias={categorias}
           
           />
         </Box>

@@ -1,15 +1,17 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-undef */
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { db, uploadFile } from "../../../firebaseConfig";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
-
+import MenuItem from '@mui/material/MenuItem';
 const ProductsForm = ({
   handleClose,
-  // handleCloseCategoria,
   setIsChange,
   productSelected,
   setProductSelected,
+  categorias
+  
 }) => {
   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
@@ -83,6 +85,7 @@ const ProductsForm = ({
  
   };
 
+
   return (
     <div>
       <form
@@ -123,12 +126,19 @@ const ProductsForm = ({
           onChange={handleChange}
         />
         <TextField
-          variant="outlined"
-          defaultValue={productSelected?.category}
-          label="categoria"
-          name="category"
-          onChange={handleChange}
-        />
+         select
+         variant="outlined"
+         defaultValue={productSelected?.category}
+         label="Categoría"
+         name="category"
+         onChange={handleChange}
+        >
+       {categorias.map((categoria) => (
+       <MenuItem key={categoria.id} value={categoria.title}>
+       {categoria.title}
+       </MenuItem>
+        ))}
+      </TextField>
         <div >
           {url && (
           <img
