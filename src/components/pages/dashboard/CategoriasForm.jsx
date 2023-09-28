@@ -26,26 +26,17 @@ const CategoriasForm = ({
     setIsLoading(true);
     let url = await uploadFile(file);
     setUrl(url)
-    
 
-    // if (productSelected) {
-    //   setProductSelected({ ...productSelected, image: url });
-    // } else {
       setNewCategoria({ ...newCategoria, image: url });
-    // }
+
 
     setIsLoading(false);
   };
 
   const handleChange = (e) => {
-    // if (productSelected) {
-    //   setProductSelected({
-    //     ...productSelected,
-    //     [e.target.name]: e.target.value,
-    //   });
-    // } else {
+    
       setNewCategoria({ ...newCategoria, [e.target.name]: e.target.value });
-    // }
+
   };
 
   const handleSubmit = (e) => {
@@ -53,27 +44,15 @@ const CategoriasForm = ({
 
     const categoriasCollection = collection(db, "categorias");
 
-    // if (productSelected) {
-    //   let obj = {
-    //     ...productSelected,
-    //     unit_price: +productSelected.unit_price,
-    //     stock: +productSelected.stock,
-    //   };
-    //   updateDoc(doc(productsCollection, productSelected.id), obj).then(() => {
-    //     setIsChange(true);
-    //     handleCloseCategoria();
-    //   });
-    // } else {
       let obj = {
         ...newCategoria,
-        // unit_price: +newProduct.unit_price,
-        // stock: +newProduct.stock,
+      
       };
       addDoc(categoriasCollection, obj).then(() => {
-        // setIsChange(true);
+   
         handleCloseCategoria();
       });
-    // }
+
  
   };
 
@@ -91,14 +70,12 @@ const CategoriasForm = ({
       >
         <TextField
           variant="outlined"
-          // defaultValue={productSelected?.title}
           label="nombre"
           name="title"
           onChange={handleChange}
         />
         <TextField
           variant="outlined"
-          // defaultValue={productSelected?.description}
           label="descripcion"
           name="description"
           onChange={handleChange}
@@ -112,7 +89,6 @@ const CategoriasForm = ({
           style={{ width: "80px", height: "80px", border :'none' }}
         />)}
                   <img
-                    // src={productSelected?.image}
                     alt=""
                     style={{ width: "80px", height: "80px", border :'none' }}
                   />
@@ -124,10 +100,7 @@ const CategoriasForm = ({
             Cargar imagen
           </Button>
          )}
-        {/* {file && !isLoading && ( */}
           <Button variant="contained" type="submit" color="secondary">
-            {/* {productSelected ? "modificar" :
-             "crear"} */}
              Crear
           </Button>
         {/* )} */}
