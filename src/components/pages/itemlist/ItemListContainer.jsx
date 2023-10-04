@@ -84,7 +84,7 @@ const ItemListContainer= () => {
   async function actualizarFavoritos(productoId) {
 
     const favoritosRef = collection(db, 'favoritos');
-    const q = query(favoritosRef, where('favoritoId', '==', productoId));
+    const q = query(favoritosRef, where('favoritoId', '==', productoId,'email', '==', user.email));
   
     try {
       const snapshot = await getDocs(q);
