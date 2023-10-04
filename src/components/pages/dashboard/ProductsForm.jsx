@@ -97,6 +97,7 @@ const ProductsForm = ({
           gap: "20px",
         }}
       >
+        <h1>Nuevo Producto</h1>
         <TextField
           variant="outlined"
           defaultValue={productSelected?.title}

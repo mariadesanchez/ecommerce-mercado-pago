@@ -40,9 +40,9 @@ const closeConfirmation = () => {
 };
   return (
     <div>
-        <h1>estoy en el carrito</h1>
+      
     
-        <h1 style={{color: "red"}}>$ {total}</h1>
+        <h1  style={{ textAlign: "center", marginTop: "20px" }}>Total: <strong  style={{color: "red"}}>$ {total}</strong></h1>
     
        
         <TableContainer component={Paper}>

@@ -58,7 +58,8 @@ const CategoriasForm = ({
         // unit_price: +productSelected.unit_price,
         // stock: +productSelected.stock,
       };
-      updateDoc(doc(categoriasCollection, categoriaSelected.id), obj).then(() => {
+      updateDoc(doc(categoriasCollection,
+         categoriaSelected.id), obj).then(() => {
         setIsChangeCategoria(true);
         handleCloseCategoria();
       });
@@ -87,6 +88,7 @@ const CategoriasForm = ({
           gap: "20px",
         }}
       >
+        <h1>Nueva Categoría</h1>
         <TextField
           variant="outlined"
           defaultValue={categoriaSelected?.title}

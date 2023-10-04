@@ -23,7 +23,8 @@ const UserOrders = () => {
   useEffect(()=>{
 
     const ordersCollections = collection(db, "orders")
-    let ordersFiltered = query( ordersCollections, where("email", "==", user.email) )
+    let ordersFiltered = query( ordersCollections,
+       where("email", "==", user.email) )
     getDocs(ordersFiltered).then(res => {
       const newArr = res.docs.map( order => {
         return {...order.data(), id: order.id}

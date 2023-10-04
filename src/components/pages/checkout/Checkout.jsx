@@ -38,7 +38,8 @@ const Checkout = () => {
     let order = JSON.parse(localStorage.getItem("order"));
     if (paramValue === "approved") {
       let ordersCollection = collection(db, "orders");
-      addDoc(ordersCollection, { ...order, date: serverTimestamp() }).then(
+      addDoc(ordersCollection, { ...order, 
+        date: serverTimestamp() }).then(
         (res) => {
           setOrderId(res.id);
         }
