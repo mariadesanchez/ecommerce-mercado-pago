@@ -12,6 +12,7 @@ import corazon from '../../../../src/images/corazon.png';
 import corazonRojo from '../../../../src/images/corazon-rojo.png';
 // eslint-disable-next-line no-unused-vars
 import { AuthContext } from "../../../context/AuthContext"
+// import '..Favs/Favs.scss'
 
 
 
@@ -128,7 +129,8 @@ const Favs= () => {
     
           <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
           <button  id = 'toggleButton'onClick={() => actualizarFavoritos( product.id)} 
-          style={{ backgroundColor: 'transparent', borderRadius: '20px',width: '50px', height: '50px' }}    >  
+      style={{ backgroundColor: 'transparent',width: '50px', height: '50px', border:'none', cursor:'pointer' }}  
+      >  
 
           <><img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
           <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} /></> 

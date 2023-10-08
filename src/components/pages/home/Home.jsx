@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import ThreeDImage from './TrheeDImage'; // Asegúrate de que la ruta sea correcta
 
-const Home = () => {
-
-
+function Home() {
   return (
-    <div>
-      <h1>Este es el home Cart Mercado Pago</h1>
+    <div className="home">
+      <h1>Bienvenido a Mi Aplicación 3D</h1>
+      {/* <ThreeDImage /> Renderiza tu componente ThreeDImage aquí */}
     </div>
   );
-};
+}
 
 export default Home;
+

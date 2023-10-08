@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-undef */
@@ -12,6 +13,7 @@ import corazon from '../../../../src/images/corazon.png';
 import corazonRojo from '../../../../src/images/corazon-rojo.png';
 // eslint-disable-next-line no-unused-vars
 import { AuthContext } from "../../../context/AuthContext"
+// import '../itemlist/ItemListContainer.scss'
 
 
 
@@ -130,23 +132,28 @@ const ItemListContainer= () => {
           key={product.id}
           style={{
             border: "1px solid black",
-            flex: "1 1 calc(25% - 40px)",
+            flex: "1 1 calc(33.33% - 20px)", // 3 columnas en pantallas grandes
             padding: "20px",
             boxSizing: "border-box",
             minWidth: "250px", // Ancho mínimo para evitar elementos demasiado pequeños
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <img src={product.image} style={{ width: "100%" }} alt="" />
+          <img class="imagen"src={product.image} style={{ width: "100%",height:"350px" }} alt="" />
           <h4>{product.title}</h4>
           <h4>Precio: {product.unit_price}</h4> {/* Corrección aquí */}
           <h4>Stock: {product.stock}</h4>
     
-          <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
+          <Link to={`/itemDetail/${product.id}`}><h2>Ver detalle</h2></Link>
           <button  id = 'toggleButton'onClick={() => actualizarFavoritos( product.id)} 
-          style={{ backgroundColor: 'transparent', borderRadius: '20px',width: '50px', height: '50px' }}    >  
+      style={{ backgroundColor: 'transparent',width: '50px', height: '50px', border:'none', cursor:'pointer' }}  
+      >  
 
-          <><img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
-          <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} /></> 
+          <><img class="corazon" src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
+          <img class="corazon" src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} /></> 
     
     
            </button>      
@@ -159,31 +166,58 @@ const ItemListContainer= () => {
 <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
 {productosNoFavoritos.map((product) => {
   return (
-    <><div
-      key={product.id}
-      style={{
-        border: "1px solid black",
-        flex: "1 1 calc(25% - 40px)",
-        padding: "20px",
-        boxSizing: "border-box",
-        minWidth: "250px", // Ancho mínimo para evitar elementos demasiado pequeños
-      }}
-    >
-      <img src={product.image} style={{ width: "100%" }} alt="" />
-      <h4>{product.title}</h4>
-      <h4>Precio: {product.unit_price}</h4> {/* Corrección aquí */}
-      <h4>Stock: {product.stock}</h4>
+    <>
+    <div
+  key={product.id}
+  style={{
+    border: "1px solid black",
+    padding: "20px",
+    boxSizing: "border-box",
+    minWidth: "250px", // Ancho mínimo para evitar elementos demasiado pequeños
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "calc(25% - 20px)", // 4 columnas en pantallas grandes
+  }}
+>
+  <div style={{ width: "100%", marginBottom: "20px" }}>
+    <img class="imagen" src={product.image} style={{ width: "100%",height:"350px" }} alt="" />
+  </div>
+  <h2>{product.title}</h2>
+  <h2>Precio: {product.unit_price}</h2>
+  <h2>Stock: {product.stock}</h2>
 
-      <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
-      <button  id = 'toggleButton'onClick={() => actualizarFavoritos( product.id)} 
-      style={{ backgroundColor: 'transparent', borderRadius: '20px',width: '50px', height: '50px' }}    >  
+  <Link to={`/itemDetail/${product.id}`}><h2>Ver detalle</h2></Link>
 
-      <><img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'block' }} />
-      <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'none' }} /></> 
-
-
-       </button>      
-    </div>     
+  <button
+    id="toggleButton"
+    onClick={() => actualizarFavoritos(product.id)}
+    style={{
+      backgroundColor: "transparent",
+      width: "50px",
+      height: "50px",
+      border: "none",
+      cursor: "pointer",
+    }}
+  >
+    <>
+      <img
+        class="corazon"
+        src={corazon}
+        id={product.id}
+        style={{ width: "40px", height: "40px", display: "block" }}
+      />
+      <img
+        class="corazon"
+        src={corazonRojo}
+        id={product.id + 1}
+        style={{ width: "40px", height: "40px", display: "none" }}
+      />
+    </>
+  </button>
+</div>
+   
     </> 
      );
 })}

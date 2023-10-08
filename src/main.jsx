@@ -5,13 +5,14 @@ import "./index.css";
 import Globalcontext from './context/GlobalContext.jsx'
 
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 
 
-        <Globalcontext>
+<Globalcontext>
 
-<App />
-</Globalcontext>);
+       <App />
+      </Globalcontext>);
 
 
 
