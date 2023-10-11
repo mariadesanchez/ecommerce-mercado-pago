@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-undef */
@@ -108,42 +109,52 @@ const Favs= () => {
     }
   }
 
+  
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
-    {productosFavoritos.map((product) => {
-      return (
-        <><div
-          key={product.id}
-          style={{
-            border: "1px solid black",
-            flex: "1 1 calc(25% - 40px)",
-            padding: "20px",
-            boxSizing: "border-box",
-            minWidth: "250px", // Ancho mínimo para evitar elementos demasiado pequeños
-          }}
-        >
-          <img src={product.image} style={{ width: "100%" }} alt="" />
-          <h4>{product.title}</h4>
-          <h4>Precio: {product.unit_price}</h4> {/* Corrección aquí */}
-          <h4>Stock: {product.stock}</h4>
-    
-          <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
-          <button  id = 'toggleButton'onClick={() => actualizarFavoritos( product.id)} 
-      style={{ backgroundColor: 'transparent',width: '50px', height: '50px', border:'none', cursor:'pointer' }}  
-      >  
-
-          <><img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
-          <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} /></> 
-    
-    
-           </button>      
-        </div>     
-        </>  );
-    })}
-  </div>
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {productosFavoritos.map((product) => {
+          return (
+            <div key={product.id} className="relative overflow-hidden bg-gray-200 rounded">
+            <img
+                className="w-full h-80 md:h-96 rounded-lg object-cover md:!rounded-none md:!rounded-l-lg"
+                src={product.image}
+                alt=""
+              />
+              <div className="flex flex-col justify-center items-center p-6">
+                <h5 className="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                  {product.title}
+                </h5>
+                <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  Precio: {product.unit_price}
+                </p>
+                <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                  Stock: {product.stock}
+                </p>
+                <Link to={`/itemDetail/${product.id}`}>Ver detalle</Link>
+  
+                <button
+                  type="button"
+                  id="toggleButton"
+                  onClick={() => actualizarFavoritos(product.id)}
+                  href="#"
+                  className="inline-block rounded bg-primary px-8 py-3 text-base font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                >
+                  <img src={corazon} id={product.id} style={{ width: '40px', height: '40px', display: 'none' }} />
+                  <img src={corazonRojo} id={product.id + 1} style={{ width: '40px', height: '40px', display: 'block' }} />
+                </button>
+              </div>
+            </div>
+            
+          );
+        })}
+      </div>
+    </div>
+  );
   
   
-    );
   };
 export default Favs;
 
